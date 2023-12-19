@@ -1,0 +1,180 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Мои Налоги</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script>
+<!--window.onload = function () {-->
+let dateCollection = [];
+let cashCollection = [];
+
+function collect() {
+    var dateCollection_node = document.querySelectorAll('.colwithinf .date');
+    var cashCollection_node = document.querySelectorAll('.colwithinf .cash');
+
+    var dataCollection = [];
+
+    for (let i = 0; i < dateCollection_node.length; i++) {
+        const dateItem = dateCollection_node[i];
+        const cashItem = cashCollection_node[i];
+
+        // Получаем дату в формате YYYY-MM-DD
+        const date = dateItem.innerHTML;
+
+        // Добавляем объект в массив с датой и cash
+        dataCollection.push({ date, cash: cashItem.innerHTML });
+    }
+
+    // Сортируем массив по дате
+    dataCollection.sort((a, b) => {
+        return new Date(a.date) - new Date(b.date);
+    });
+
+    // Очищаем старые данные
+    dateCollection = [];
+    cashCollection = [];
+
+    // Заполняем отсортированные данные в массивы
+    for (let i = 0; i < dataCollection.length; i++) {
+        const item = dataCollection[i];
+        dateCollection.push(item.date);
+        cashCollection.push(item.cash);
+    }
+
+    console.log(dateCollection);
+    console.log(cashCollection);
+}
+
+setTimeout(collect, 1000)
+
+function canvas() {
+
+var dataPoints = [];
+
+for (var i = 0; i < dateCollection.length; i++) {
+
+dataPoints.push({
+    x: new Date(dateCollection[i]),
+    y: parseFloat(cashCollection[i])
+    });
+
+}
+
+var chart = new CanvasJS.Chart("chartContainer", {
+	animationEnabled: true,
+	title:{
+		text: ""
+	},
+	axisX:{
+		valueFormatString: "DD MMM YYYY",
+		crosshair: {
+			enabled: true,
+			snapToDataPoint: true
+		}
+	},
+	axisY: {
+		title: "Income (in BYN)",
+		valueFormatString: "Br ##0.00",
+		crosshair: {
+			enabled: true,
+			snapToDataPoint: true,
+			labelFormatter: function(e) {
+				return "BYN" + CanvasJS.formatNumber(e.value, "##0.00");
+			}
+		}
+	},
+	data: [{
+		type: "area",
+		xValueFormatString: "DD MMM",
+		yValueFormatString: "BYN##0.00",
+		dataPoints: dataPoints
+<!--		dataPoints: [-->
+<!--			{ x: new Date(2016, 07, 01), y: 76.727997 },-->
+<!--			{ x: new Date(2016, 07, 02), y: 75.459999 },-->
+<!--			{ x: new Date(2016, 07, 03), y: 76.011002 },-->
+<!--			{ x: new Date(2016, 07, 04), y: 75.751999 },-->
+<!--			{ x: new Date(2016, 07, 05), y: 77.500000 },-->
+<!--			{ x: new Date(2016, 07, 08), y: 77.436996 },-->
+<!--			{ x: new Date(2016, 07, 09), y: 79.650002 },-->
+<!--			{ x: new Date(2016, 07, 10), y: 79.750999 },-->
+<!--			{ x: new Date(2016, 07, 11), y: 80.169998 },-->
+<!--			{ x: new Date(2016, 07, 12), y: 79.570000 },-->
+<!--			{ x: new Date(2016, 07, 15), y: 80.699997 },-->
+<!--			{ x: new Date(2016, 07, 16), y: 79.686996 },-->
+<!--			{ x: new Date(2016, 07, 17), y: 78.996002 },-->
+<!--			{ x: new Date(2016, 07, 18), y: 78.899002 },-->
+<!--			{ x: new Date(2016, 07, 19), y: 77.127998 },-->
+<!--			{ x: new Date(2016, 07, 22), y: 76.759003 },-->
+<!--			{ x: new Date(2016, 07, 23), y: 77.480003 },-->
+<!--			{ x: new Date(2016, 07, 24), y: 77.623001 },-->
+<!--			{ x: new Date(2016, 07, 25), y: 76.408997 },-->
+<!--			{ x: new Date(2016, 07, 26), y: 76.041000 },-->
+<!--			{ x: new Date(2016, 07, 29), y: 76.778999 },-->
+<!--			{ x: new Date(2016, 07, 30), y: 78.654999 },-->
+<!--			{ x: new Date(2016, 07, 31), y: 77.667000 }-->
+<!--		]-->
+	}]
+});
+chart.render();
+
+}
+setTimeout(canvas, 1000)
+</script>
+</head>
+<body>
+<div th:insert="blocks/header :: header"></div>
+
+<div class="container mt-5">
+    <h1>Список уплаченых налогов </h1>
+<!--    <h3 th:text="${user}"></h3>-->
+
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2">График</h1>
+    </div>
+    <div id="chartContainer" style="height: 300px; width: 100%;"></div>
+</div>
+<div class="container mt-5">
+    <h2>Таблица ваших платежей</h2>
+    <div class="table-responsive small">
+        <table class="table table-striped table-sm">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Дата</th>
+                <th scope="col">Выручка</th>
+                <th scope="col">Доход</th>
+                <th scope="col">Выплата зарплаты</th>
+                <th scope="col">Заплачено налогов</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="colwithinf" th:each="data : ${data_tax}">
+                <td th:text="${data.getCount()}"></td>
+                <td class="date" th:text="${data.getData()}"></td>
+                <td class="cash" th:text="${data.getIncom()}"></td>
+                <td th:text="${data.getProfit()}"></td>
+                <td th:text="${data.getPayout_pp()}"></td>
+                <td th:text="${data.getTax_pay()}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+<!--        <button class="btn btn-primary me-md-2" type="button">Button</button>-->
+<!--        <button class="btn btn-primary" type="button"></button>-->
+        <a class="btn btn-secondary" href="/add-payment" role="button">Добавить платеж</a>
+    </div>
+<!--    <h1>Список таблички из бд users</h1>-->
+<!--    <div th:each="el : ${users}" class="alert alert-info mt-2">-->
+<!--        <h3 th:text="${el.login}"/>-->
+<!--        <h3 th:text="${el.password}"/>-->
+<!--    </div>-->
+</div>
+
+<div th:insert="blocks/footer :: footer"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+<script src="https://cdn.canvasjs.com/canvasjs.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Home</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+</head>
+
+<div th:insert="blocks/header :: header"></div>
+
+<body>
+<div class="container mt-5">
+    <div class="p-4 p-md-5 mb-4 rounded text-body-emphasis bg-body-secondary">
+        <div class="col-lg-6 px-0">
+            <h1 class="display-4 fst-italic">Веб-сайт для учета налоговых отчислений гражданами Республики Беларусь</h1>
+            <p class="lead my-3">Используя нас вы навсегда перейдете на более качественный сервис по оптимихзации траты времени на учет своих налогов </p>
+<!--            <p class="lead mb-0"><a href="#" class="text-body-emphasis fw-bold">Continue reading...</a></p>-->
+        </div>
+    </div>
+</div>
+
+</div>
+<div class="container mt-5">
+
+
+<div class="card-group">
+    <div class="card">
+<!--        <img src="/taxsite/src/main/resources/images/pp_img.jpg" class="card-img-top" alt="pp">-->
+        <div><img src="https://nalog.gov.by/local/templates/main_template/img/illustrations/organization.svg" width="380" class="card-img-top" alt="pp"> </div>
+        <div class="card-body">
+            <h5 class="card-title">Организациям</h5>
+            <p th:text="${name}"></p>
+            <p class="card-text">Мы рады быть частью вашей большой компании но и налоги надо вовремя платить а мы смодем вам в это помочь</p>
+            <p class="card-text"><small class="text-body-secondary">Новый правки в налоговый кодекс для организации были 2022.12.21</small></p>
+        </div>
+    </div>
+    <div class="card">
+        <img src="https://nalog.gov.by/local/templates/main_template/img/illustrations/ip.svg" width="100" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">Индивидуальным  предпринимателям</h5>
+            <p class="card-text">Данный сайт оченб удобный для ИП как на постоянное использование так и разоваое посещение</p>
+            <p class="card-text"><small class="text-body-secondary">Новый правки в налоговый кодекс для ИП были 2021.04.10</small></p>
+        </div>
+    </div>
+    <div class="card">
+        <img src="https://nalog.gov.by/local/templates/main_template/img/illustrations/Individuals.svg" class="card-img-top" alt="3cart">
+        <div class="card-body">
+            <h5 class="card-title">Физическим лицам</h5>
+            <p class="card-text">Вы физическое лицо. Вы свет нашей нации на вас только и держиться вся налоговая система</p>
+            <p class="card-text"><small class="text-body-secondary">Новый правки в налоговый кодекс для физлиц были 2018.10.01</small></p>
+        </div>
+    </div>
+
+</div>
+</div>
+
+<div th:insert="blocks/footer :: footer"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</body>
+</html>

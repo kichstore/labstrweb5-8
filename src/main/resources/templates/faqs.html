@@ -1,0 +1,183 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="Налоги"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
+<body>
+<div th:insert="blocks/header :: header"></div>
+
+<main class="px-3">
+    <h1 class="text-center mt-5 mb-4"><strong>FAQs</strong></h1>
+    <div class="container mt-5 mb-5">
+        <div class="container" style="background-color: #DCDCDC; border-radius: 10px;">
+<!--            <p class="lead">Cover is a one-page template for building simple and beautiful home pages. Download, edit the text, and add your own fullscreen background photo to make it your own.</p>-->
+            <p class="lead">
+            <p>
+                <button class="btn" style="color: #FFFF00; text-shadow: 2px 2px 4px #000;" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                    <div class="text-left">
+                        <p style="text-align: justify;">
+                        Организация тестирует сервис по заполнению сведений о доходах физических лиц размещенный в Личном кабинете плательщика в разделе «Кабинет налогового агента».
+                        </p>
+                        <p style="text-align: justify;">
+                            При попытке заполнить сведения за ноябрь 2023 года по сотруднице, имеющей двоих несовершеннолетних детей и работающей на 0,5 ставки по основному месту работы, появляются ошибки:
+                        </p>
+                        <p style="text-align: justify;">
+                            1. В строке 4.1 отражается код месяца начисления дохода – <br>
+                            11 (ноябрь)
+                        </p>
+                        <p style="text-align: justify;">
+                            2. в строке 4.2 отражается сумма начисленного дохода в размере 300 руб.
+                        </p>
+                        <p style="text-align: justify;">
+                            3. в строке 7.1 отражается код месяца, за который предоставлены стандартные налоговые вычеты – 11 (ноябрь)
+                        </p>
+                        <p style="text-align: justify;">
+                            4. в строке 7.2 отражаются стандартные налоговые вычеты, а именно по коду 600 – в размере 156 руб., по коду 611 – 174 руб. (87 руб. *2)
+                        </p>
+                        <p style="text-align: justify;">
+                            5. в строке 14.2 отражается 0 руб. подоходного налога. В отношении данной строки выдается предупреждение о неправильно отражаемой сумме подоходного налога.
+                        </p>
+                        <p style="text-align: justify;">
+                            Если вводить в строке 7.2 сумму стандартных налоговых вычетов в размере, не превышающем начисленный доход (например, код 600 – в размере 156 руб., код 611 – 144 руб. (300 руб. – 156 руб.), выдается предупреждение о том, что размер вычета по коду 611 должен быть кратен 87.
+                        </p>
+                        <p style="text-align: justify;">
+                            Как правильно в данной ситуации заполнить сведения о доходах в отношении сотрудницы организации.
+                        </p>
+                    </div>
+                </button>
+            </p>
+            <div class="collapse" id="collapseExample">
+                <div class="card card-body">
+                    <div style="background-color: #FFFFFF;">При заполнении сведений о доходах размер стандартных налоговых вычетов отражается в размере, предусмотренном статьей 209 Налогового кодекса. <br>
+                        Поэтому, даже если начисленный доход меньше стандартных налоговых вычетов, при заполнении сведений размер вычета проставляется в сведениях в размерах, установленных законодательством.<br>
+                        В части ошибки по подоходному налогу информируем, что в настоящее время данная проблема устраняется разработчиками министерства. Информация о ее устранении будет размещена на сайте МНС в разделе «Новости».<br>
+                    </div>
+                </div>
+            </div>
+<!--            <p>&nbsp;</p>-->
+        </div>
+
+        <hr class="my-4">
+
+        <div class="container" style="background-color: #DCDCDC; border-radius: 10px;">
+            <!--            <p class="lead">Cover is a one-page template for building simple and beautiful home pages. Download, edit the text, and add your own fullscreen background photo to make it your own.</p>-->
+            <p class="lead">
+            <p>
+                <button class="btn" style="color: #FFFF00; text-shadow: 2px 2px 4px #000;" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample1" aria-expanded="false" aria-controls="collapseExample1">
+            <div class="text-left"><p style="text-align: justify;">
+                Организация выплачивает работнице пособие на детей старше 3 лет из отдельных категорий семей, предусмотренных законодательством. Как отразить в сведениях о доходах физических лиц за 2023 год такие пособия?
+            </p></div>
+            </button>
+            </p>
+            <div class="collapse" id="collapseExample1">
+                <div class="card card-body">
+                    <div style="background-color: #FFFFFF;">При заполнении сведений о доходах размер стандартных налоговых вычетов отражается в размере, предусмотренном статьей 209 Налогового кодекса. <br>
+                        Поэтому, даже если начисленный доход меньше стандартных налоговых вычетов, при заполнении сведений размер вычета проставляется в сведениях в размерах, установленных законодательством.<br>
+                        В части ошибки по подоходному налогу информируем, что в настоящее время данная проблема устраняется разработчиками министерства. Информация о ее устранении будет размещена на сайте МНС в разделе «Новости».<br>
+                    </div>
+                </div>
+            </div>
+<!--            <p>&nbsp;</p>-->
+        </div>
+
+        <hr class="my-4">
+
+        <div class="container" style="background-color: #DCDCDC; border-radius: 10px;">
+            <!--            <p class="lead">Cover is a one-page template for building simple and beautiful home pages. Download, edit the text, and add your own fullscreen background photo to make it your own.</p>-->
+            <p class="lead">
+            <p>
+                <button class="btn" style="color: #FFFF00; text-shadow: 2px 2px 4px #000;" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample3" aria-expanded="false" aria-controls="collapseExample3">
+            <div class="text-left"><p style="text-align: justify;">
+                На предприятии выдаются сотрудникам абонементы в бассейн и бутилированная вода. Как отразить в сведениях о доходах физических лиц за 2023 год?
+            </p></div>
+            </button>
+            </p>
+            <div class="collapse" id="collapseExample3">
+                <div class="card card-body">
+                    <div style="background-color: #FFFFFF;"><p style="text-align: justify;">
+                        Стоимость бутилированной воды не признается объектом налогообложения подоходным налогом (пп.2.4 п.2 ст.196 НК). Следовательно, стоимость бутилированной воды не отражается в сведениях о доходах.
+                    </p>
+                        <p style="text-align: justify;">
+                            Стоимость выданных сотруднику в течение 2023 года абонементов в бассейн отражается в совокупности с иными доходами сотрудника, получаемыми от нанимателя в рамках трудовых отношений (зарплата, премия, больничный, отпускные, выплаты из «социального пакета» и др.). Общая сумма начисленных доходов отражается в строке 4.3 за конкретный месяц с использованием в строке 4.2 кода 201, если сотрудник работает по трудовому договору (контракту), кода 200 – если по трудовому договору (контракту) на условиях внешнего совместительства, 202 – если по гражданско-правовому договору (например, договор подряда).
+                        </p>
+                        <p style="text-align: justify;">
+                            При представлении льготы по подоходному налогу сумма льгот отражается в строке 5.3 с использованием в строке 5.2 кода 500 «Доходы, указанные в пункте 23 статьи 208 Налогового кодекса Республики Беларусь».
+                        </p></div>
+                </div>
+            </div>
+            <!--            <p>&nbsp;</p>-->
+        </div>
+
+        <hr class="my-4">
+
+        <div class="container" style="background-color: #DCDCDC; border-radius: 10px;">
+            <!--            <p class="lead">Cover is a one-page template for building simple and beautiful home pages. Download, edit the text, and add your own fullscreen background photo to make it your own.</p>-->
+            <p class="lead">
+            <p>
+                <button class="btn" style="color: #FFFF00; text-shadow: 2px 2px 4px #000;" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample4" aria-expanded="false" aria-controls="collapseExample4">
+            <div class="text-left"><p style="text-align: justify;">
+                Организация заключила договор медицинского страхования на год в пользу своих сотрудников. Оплата страховых взносов производится организацией равными долями в течение года. По заявлению работников также страхуются их родственники, организация оплачивает одновременно страховые взносы за сотрудников и за их родственников. <br>
+            </p>
+                <p style="text-align: justify;">
+                    При этом, суммы страховых взносов, оплаченных за родственников сотрудников в дальнейшем погашаются сотрудниками (удерживаются из их заработной платы по заявлению).
+                </p>
+                <p style="text-align: justify;">
+                    Нужно ли подавать сведения по суммам страховых взносов, уплаченных за родственников сотрудников, в отношении которых сотрудники возмещают такие расходы организации? Сведения в таком случае надо подавать по сотруднику или по его родственнику?
+                </p></div>
+            </button>
+            </p>
+            <div class="collapse" id="collapseExample4">
+                <div class="card card-body">
+                    <div style="background-color: #FFFFFF;"><p style="text-align: justify;">
+                        Сведения о страховых взносах, оплаченных организацией в пользу родственников сотрудников, в рассматриваемой ситуации не представляются.
+                    </p>
+                        <p style="text-align: justify;">
+                            В данной ситуации оплата организацией страховых взносов по договору добровольного страхования, заключенного в пользу родственников сотрудника, производится на условиях обязательного возмещения сотрудником таких расходов организации. Следовательно, в такой ситуации, у родственников не возникает дохода.
+                        </p>
+                        <p style="text-align: justify;">
+                            Таким образом, сведения о таких оплатах страховых взносов не отражаются в сведениях о доходах. <br>
+                        </p>
+                        <p style="text-align: justify;">
+                            В случае, если оплата организацией страховых взносов за родственников сотрудника производится без возмещения организации таких расходов, то в таком случае организация является налоговым агентом, объект налогообложения - доход в натуральной форме в размере оплаченных страховых взносов в пользу родственников сотрудника. В данной ситуации получателем дохода является родственник сотрудника. Сведения о доходах подаются в отношении таких лиц с указанием сумм полученного в натуральной форме дохода в строке 4.2 с использованием кода 219 «Иные доходы».
+                        </p>
+                        <p style="text-align: justify;">
+                            При представлении льготы по подоходному налогу в соответствии с абзацем третьим части 1 пункта 23 статьи 208 Налогового кодекса (в размере 186 руб. в 2023 году), в строке 5.2 используется код 500.
+                        </p></div>
+                </div>
+            </div>
+            <!--            <p>&nbsp;</p>-->
+        </div>
+
+        <hr class="my-4">
+
+        <div class="container">
+            <p>
+                <button class="btn" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample0" aria-expanded="false" aria-controls="collapseExample0">
+                    Организация выплачивает работнице пособие на детей старше 3 лет из отдельных категорий семей, предусмотренных законодательством. Как отразить в сведениях о доходах физических лиц за 2023 год такие пособия?
+                </button>
+            </p>
+            <div class="collapse" id="collapseExample0">
+                <div class="card card-body">
+                    <div>
+                        <p style="text-align: justify;">
+                        Такие пособия отражаются в строке 4.2 в виде общей суммы начисленных за месяц доходов в совокупности с иными доходами работницы, получаемыми ею в рамках трудовых отношений с нанимателем (зарплата, премия, больничный, отпускные, выплаты из «социального пакета» и др.). Общая сумма начисленных за месяц доходов отражается в строке 4.3 с использованием в строке 4.2 кода 201, если работница работает по трудовому договору (контракту).
+                    </p>
+                        <p style="text-align: justify;">
+                            Льгота по подоходному налогу, предоставляемая в отношении пособий, отражается в строке 5.3 с использованием в строке 5.2 кода 503.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <hr class="my-4">
+    </div>
+</main>
+
+<div th:insert="blocks/footer :: footer"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</body>
+</html>

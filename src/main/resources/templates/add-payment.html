@@ -1,0 +1,343 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Home</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <style>
+<!--    .invalid {-->
+<!--      border: 2px solid red;-->
+<!--    }-->
+    #myHiddenLabel{
+    color: red;
+    }
+  </style>
+
+</head>
+
+<div th:insert="blocks/header :: header"></div>
+
+<body>
+
+<div class="container mt-5 mb-5">
+    <h1>Платеж по налогам</h1>
+<!--    <form>-->
+<!--        <div class="form-check">-->
+<!--            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">-->
+<!--            <label class="form-check-label" for="flexCheckDefault">-->
+<!--                Default checkbox-->
+<!--            </label>-->
+<!--        </div>-->
+<!--        <div class="form-check">-->
+<!--            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>-->
+<!--            <label class="form-check-label" for="flexCheckChecked">-->
+<!--                Checked checkbox-->
+<!--            </label>-->
+<!--        </div>-->
+<!--        <div class="form-check form-switch">-->
+<!--            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" checked>-->
+<!--            <label class="form-check-label" for="flexSwitchCheckChecked">Checked switch checkbox input</label>-->
+<!--        </div>-->
+<!--        <br>-->
+<!--&lt;!&ndash;        <div>&ndash;&gt;-->
+<!--&lt;!&ndash;            Выбирете дату:&ndash;&gt;-->
+<!--&lt;!&ndash;            <input type="date" id="date_input" name="payment" required class="form-control">&ndash;&gt;-->
+<!--&lt;!&ndash;        </div>&ndash;&gt;-->
+<!--    </form>-->
+
+    <div class="row g-5">
+        <div class="col-md-5 col-lg-4 order-md-last">
+            <h4 class="d-flex justify-content-between align-items-center mb-3">
+                <span class="text-primary">Подсчет налоговых отличислений</span>
+                <span class="badge bg-primary rounded-pill"></span>
+            </h4>
+            <ul class="list-group mb-3">
+                <li class="list-group-item d-flex justify-content-between lh-sm">
+                    <div>
+                        <h6 class="my-0">Налог на доход</h6>
+<!--                        <small class="text-body-secondary">Brief description</small>-->
+                    </div>
+<!--                    <span class="text-body-secondary">%00</span>-->
+                    <span class="text-body-secondary">BYN <span name="" id="profit_span"></span></span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between lh-sm">
+                    <div>
+                        <h6 class="my-0">Подоходный налог</h6>
+<!--                        <small class="text-body-secondary">Brief description</small>-->
+                    </div>
+<!--                    <span class="text-body-secondary">%00</span>-->
+                    <span class="text-body-secondary">BYN <span id="payout_pp_span"></span></span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between lh-sm">
+                    <div>
+                        <h6 class="my-0">Отчисления ФСЗН</h6>
+<!--                        <small class="text-body-secondary">Brief description</small>-->
+                    </div>
+<!--                    <span class="text-body-secondary">%00</span>-->
+                    <span class="text-body-secondary">BYN <span id="fszn_span"></span></span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between">
+                    <span>Итого (BYN)</span>
+                    <strong>BYN <span id="sum"></span> </strong>
+                </li>
+            </ul>
+
+            <form class="card p-2">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Promo code">
+                    <button type="submit" class="btn btn-secondary">Redeem</button>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-7 col-lg-8">
+
+            <form class="needs-validation" novalidate="" action="/add-payment" method="post">
+                <div class="row g-3">
+                    <div class="col-sm-6">
+                        <label for="firstName" class="form-label">Ваше имя</label>
+                        <input type="text" class="form-control" id="firstName" th:placeholder="${person_inf.person_name}" required="" disabled></input>
+                        <div class="invalid-feedback">
+                            Valid first name is required.
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <label for="lastName" class="form-label">Ваша фамилия</label>
+                        <input type="text" class="form-control" id="lastName" th:placeholder="${person_inf.person_lastname}" value="" required="" disabled>
+                        <div class="invalid-feedback">
+                            Valid last name is required.
+                        </div>
+                    </div>
+
+                    <div class="col-12">
+                        <label for="username" class="form-label">Название организации</label>
+                        <div class="input-group has-validation">
+                            <span class="input-group-text">®</span>
+                            <input type="text" class="form-control" id="username" th:placeholder="${org_inf.full_name_org}" required="" disabled>
+                            <div class="invalid-feedback">
+                                Your username is required.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email" th:placeholder="${person_inf.email}" disabled >
+                        <div class="invalid-feedback">
+                            Please enter a valid email address for shipping updates.
+                        </div>
+                    </div>
+
+                    <div class="col-12">
+                        <label for="address" class="form-label">Адрес</label>
+                        <input type="text" class="form-control" id="address" placeholder="Пушкина 7/1" required="">
+                        <div class="invalid-feedback">
+                            Please enter your shipping address.
+                        </div>
+                    </div>
+
+                    <div class="col-12">
+                        <div>
+                            Выбирете дату:
+                            <input type="date" id="date_input" name="payment_data" required class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <label for="income" class="form-label">Ваша выручка</label>
+                        <label for="myHiddenLabel" id="myHiddenLabelForFszn" th:text="${tax_inf.fszn_tax}" style="display: none;"></label>
+                        <input type="text" class="form-control" name="incom" id="income" placeholder="0000" required="">
+                        <div class="invalid-feedback">
+                            Please select a valid country.
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <label for="profit" class="form-label">Ваш доход</label>
+                        <label for="myHiddenLabel" id="myHiddenLabelForProfit" th:text="${tax_inf.profit_tax}" style="display: none;"></label>
+                        <input type="text" class="form-control" id="profit" name="profit" placeholder="0000" required=""  >
+                        <div class="invalid-feedback">
+                            Please provide a valid state.
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <label for="payout_pp" class="form-label">Выплата сотрудникам</label>
+                        <label for="myHiddenLabel" id="myHiddenLabelForPayout_pp" th:text="${tax_inf.incom_tax_ind}" style="display: none;"></label>
+                        <input type="text" class="form-control" id="payout_pp" name="payout_pp" placeholder="0000" required=""  >
+                        <div class="invalid-feedback">
+                            Zip code required.
+                        </div>
+                    </div>
+
+                    <input type="hidden" name="fszn_span" id="fszn_span_input">
+                    <input type="hidden" name="profit_span" id="profit_span_input">
+                    <input type="hidden" name="payout_pp_span" id="payout_pp_span_input">
+                    <input type="hidden" name="sum" id="sum_input">
+                </div>
+
+                <hr class="my-4">
+
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked1" checked>
+                    <label class="form-check-label" for="flexSwitchCheckChecked1">Я полностью подтверждаю корректность введенных данных</label>
+                </div>
+
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked2" checked>
+                    <label class="form-check-label" for="flexSwitchCheckChecked2">Я разрешаю отправлять рекламу на почту</label>
+                </div>
+
+                <hr class="my-4">
+
+                <h4 class="mb-3">Payment</h4>
+
+                <div class="my-3">
+                    <div class="form-check">
+                        <input id="credit" name="paymentMethod" type="radio" class="form-check-input" checked="" required="">
+                        <label class="form-check-label" for="credit">Кредитная карта</label>
+                    </div>
+                    <div class="form-check">
+                        <input id="debit" name="paymentMethod"  type="radio" class="form-check-input" required="">
+                        <label class="form-check-label" for="debit">Дебетовая карта</label>
+                    </div>
+                </div>
+
+                <div class="row gy-3">
+                    <div class="col-md-6">
+                        <label for="cc-name" class="form-label">Имя на карте</label>
+                        <input type="text" pattern="^[A-Za-z]+ [A-Za-z]+$" placeholder="Kichigin Kanstantsin" class="invalid form-control" id="cc-name" required>
+                        <small class="text-body-secondary">Имя на вашей карте</small>
+                        <div class="invalid-feedback">
+                            Name on card is required
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label for="cc-number" class="form-label">Номер карты</label>
+                        <input type="text" pattern="\d{4}-\d{4}-\d{4}-\d{4}" placeholder="XXXX-XXXX-XXXX-XXXX" class="invalid form-control" id="cc-number" required>
+                        <div class="invalid-feedback">
+                            Credit card number is required
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <label for="cc-expiration" class="form-label">Срок действия</label>
+                        <input type="text" pattern="(0[1-9]|1[0-2])\/\d{2}" placeholder="MM/YY" class="invalid form-control" id="cc-expiration"  required>
+                        <div class="invalid-feedback">
+                            Expiration date required
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <label for="cc-cvv" class="form-label">CVV</label>
+                        <input type="text" pattern="\d{3}" placeholder="XXX" class="invalid form-control" id="cc-cvv"  required>
+                        <div class="invalid-feedback">
+                            Security code required
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="my-4">
+                <label for="myHiddenLabel" id="myHiddenLabel" style="display: none;">Вы должны согласиться с требованием</label>
+                <button class="w-100 btn btn-primary btn-lg" id="submitButton" type="submit">Подтвердить платеж</button>
+            </form>
+        </div>
+    </div>
+
+</div>
+
+<div th:insert="blocks/footer :: footer"></div>
+
+<script>
+        // Получаем элементы DOM
+        var profitInput = document.getElementById('profit');
+        var payoutPpInput = document.getElementById('payout_pp');
+
+        var fsznLabel = document.getElementById('myHiddenLabelForFszn');
+        var profitLabel = document.getElementById('myHiddenLabelForProfit');
+        var payoutPpLabel = document.getElementById('myHiddenLabelForPayout_pp');
+
+        var fsznSpan = document.getElementById('fszn_span');
+        var profitSpan = document.getElementById('profit_span');
+        var payoutPpSpan = document.getElementById('payout_pp_span');
+
+        var sumSpan = document.getElementById('sum');
+
+        // Получаем скрытые поля ввода
+        var fsznInput = document.getElementById('fszn_span_input');
+        var profitInputHidden = document.getElementById('profit_span_input');
+        var payoutPpInputHidden = document.getElementById('payout_pp_span_input');
+        var sumInput = document.getElementById('sum_input');
+
+        // Назначаем обработчики событий на ввод данных
+        profitInput.addEventListener('input', updateValues);
+        payoutPpInput.addEventListener('input', updateValues);
+
+        function updateValues() {
+            // Получаем значения из полей ввода
+            var profitValue = parseFloat(profitInput.value) || 0;
+            var payoutPpValue = parseFloat(payoutPpInput.value) || 0;
+
+            // Получаем проценты из меток
+            var fsznPercent = parseFloat(fsznLabel.innerText) || 0;
+            var profitPercent = parseFloat(profitLabel.innerText) || 0;
+            var payoutPpPercent = parseFloat(payoutPpLabel.innerText) || 0;
+
+            // Выполняем вычисления
+            var fsznResult = Math.round(payoutPpValue * (fsznPercent / 100));
+            var profitResult = Math.round(profitValue * (profitPercent / 100));
+            var payoutPpResult = Math.round(payoutPpValue * (payoutPpPercent / 100));
+
+            // Вставляем результаты в span
+            fsznSpan.innerText = fsznResult;
+            profitSpan.innerText = profitResult;
+            payoutPpSpan.innerText = payoutPpResult;
+
+            // Устанавливаем значения в скрытые поля ввода
+            fsznInput.value = fsznResult;
+            profitInputHidden.value = profitResult;
+            payoutPpInputHidden.value = payoutPpResult;
+
+            // Вызываем функцию для обновления суммы
+            updateSum();
+        }
+
+        // Функция для обновления суммы
+        function updateSum() {
+            // Получаем значения из span и складываем их
+            var fsznValue = parseFloat(fsznSpan.innerText) || 0;
+            var profitValue = parseFloat(profitSpan.innerText) || 0;
+            var payoutPpValue = parseFloat(payoutPpSpan.innerText) || 0;
+
+            var totalSum = fsznValue + profitValue + payoutPpValue;
+
+            // Вставляем результат в span с id sum
+            sumSpan.innerText = Math.round(totalSum);
+
+            // Устанавливаем значение в скрытое поле ввода для суммы
+            sumInput.value = Math.round(totalSum);
+        }
+
+    document.addEventListener('DOMContentLoaded', function () {
+      var switchElement = document.getElementById('flexSwitchCheckChecked1');
+      var switchElement2 = document.getElementById('flexSwitchCheckChecked2');
+      var labelElement = document.getElementById('myHiddenLabel');
+      var submitButton = document.getElementById('submitButton');
+
+      switchElement.addEventListener('change', function () {
+        if (switchElement.checked) {
+          // Включенный switch
+          submitButton.removeAttribute('disabled');
+          labelElement.style.display = 'none';
+        } else {
+          // Отключенный switch
+          submitButton.setAttribute('disabled', 'disabled');
+          labelElement.style.display = 'block'; // Или 'inline' в зависимости от типа элемента
+        }
+      });
+    });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</body>
+</html>

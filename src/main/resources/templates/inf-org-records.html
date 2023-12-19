@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Home</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+</head>
+
+<div th:insert="blocks/admin-header :: header"></div>
+
+<body>
+
+<div class="container mt-5">
+    <h1>Список юрлиц</h1>
+
+    <table class="table">
+        <tr class="table-dark">
+            <th>Название организации</th>
+            <th>CEO</th>
+            <th>Тип</th>
+            <th>e-signature</th>
+            <th>УНП</th>
+            <th>Плательщик</th>
+<!--            <th></th>-->
+<!--            <th>Email</th>-->
+            <th class="del-change"> </th>
+            <th class="del-change"> </th>
+        </tr>
+
+        <tr th:each="org : ${orgs_inf}">
+            <td th:text="${org.full_name_org}"></td>
+            <td th:text="${org.ceo}"></td>
+            <td th:text="${org.type}"></td>
+            <td th:text="${org.e_signature}"></td>
+            <td th:text="${org.payer_reg_number}"></td>
+            <td th:text="${org.lastname}"></td>
+<!--            <td th:text="${user.phone}"></td>-->
+<!--            <td th:text="${user.email}"></td>-->
+            <td>
+                <form th:action="'/org/' + ${org.id} + '/remove'" method="post">
+                    <button class="btn btn-info" type="submit">Удалить</button>
+                </form>
+            </td>
+            <td>
+                <a th:href="'/org/' + ${org.id} + '/edit'" class="btn btn-danger">Редактировать</a>
+            </td>
+
+
+        </tr>
+
+    </table>
+</div>
+
+<div th:insert="blocks/footer :: footer"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</body>
+</html>

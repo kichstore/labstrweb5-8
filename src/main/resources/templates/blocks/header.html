@@ -1,0 +1,87 @@
+<div th:fragment="header">
+    <header class="p-3 text-bg-dark">
+        <div class="container">
+            <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+                <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cash-stack" viewBox="0 0 16 16">
+                        <path d="M1 3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1zm7 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4"/>
+                        <path d="M0 5a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1zm3 0a2 2 0 0 1-2 2v4a2 2 0 0 1 2 2h10a2 2 0 0 1 2-2V7a2 2 0 0 1-2-2z"/>
+                    </svg>
+                </a>
+
+                <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                    <li><a href="/" class="nav-link px-2 text-secondary">Главное</a></li>
+                    <li><a href="/tax" class="nav-link px-2 text-white">Мои налоги</a></li>
+                    <li><a href="#" class="nav-link px-2 text-white">Общая информация</a></li>
+                    <li><a href="/faqs" class="nav-link px-2 text-white">FAQs</a></li>
+                    <li><a href="/about" class="nav-link px-2 text-white">О нас</a></li>
+                </ul>
+
+                <div>
+                    <div th:if="${name != ''}">
+                        <div class="dropdown text-end">
+                            <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                <img src="https://png.pngtree.com/element_our/png_detail/20181206/users-vector-icon-png_260862.jpg" alt="mdo" width="32" height="32" class="rounded-circle">
+                            </a>
+                            <ul class="dropdown-menu text-small" style="">
+                                <li><a class="dropdown-item disabled" aria-disabled="true" ><strong th:text="${name}"></strong></a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="/my-account">Аккаунт</a></li>
+                                <li><a class="dropdown-item" href="/tax">Мои налоги</a></li>
+<!--                                <li><a class="dropdown-item" href="#">Profile</a></li>-->
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="/login">Выход</a></li>
+                            </ul>
+                        </div>
+<!--                        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">-->
+<!--                            <div class="container-fluid">-->
+<!--                                <a class="navbar-brand" href="#">Navbar</a>-->
+<!--                                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDarkDropdown" aria-controls="navbarNavDarkDropdown" aria-expanded="false" aria-label="Toggle navigation">-->
+<!--                                    <span class="navbar-toggler-icon"></span>-->
+<!--                                </button>-->
+<!--                                <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">-->
+<!--                                    <ul class="navbar-nav">-->
+<!--                                        <li class="nav-item dropdown">-->
+<!--                                            <button class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">-->
+<!--                                                Dropdown-->
+<!--                                            </button>-->
+<!--                                            <ul class="dropdown-menu dropdown-menu-dark">-->
+<!--                                                <li><a class="dropdown-item" href="#">Action</a></li>-->
+<!--                                                <li><a class="dropdown-item" href="#">Another action</a></li>-->
+<!--                                                <li><a class="dropdown-item" href="#">Something else here</a></li>-->
+<!--                                            </ul>-->
+<!--                                        </li>-->
+<!--                                    </ul>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </nav>-->
+<!--                        <img src="https://github.com/mdo.png" alt="mdo" width="40" height="40" class="rounded-circle">-->
+<!--                        <div class="dropdown">-->
+<!--                            <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="true">menu</button>-->
+<!--                            <ul class="dropdown-menu">-->
+<!--                                <li><a href="#">Аккаунт</a></li>-->
+<!--                                <li><hr class="dropdown-divider"></li>-->
+<!--                                <li><a>Выход</a></li>-->
+<!--                            </ul>-->
+<!--                        </div>-->
+<!--                        <ul class="dropdown-menu text-small" style="">-->
+<!--                            <li><a class="dropdown-item" href="#">New project...</a></li>-->
+<!--                            <li><a class="dropdown-item" href="#">Settings</a></li>-->
+<!--                            <li><a class="dropdown-item" href="#">Profile</a></li>-->
+<!--                            <li><hr class="dropdown-divider"></li>-->
+<!--                            <li><a class="dropdown-item" href="#">Sign out</a></li>-->
+<!--                        </ul>-->
+                    </div>
+
+                    <div th:if="${name == ''}" class="text-end">
+                        <a class="btn btn-outline-light me-2" href="/login" role="button">Log in</a>
+                        <a class="btn btn-warning" href="/registration" role="button">Sign-up</a>
+<!--                        <button type="button" class="btn btn-outline-light me-2">Login</button>-->
+<!--                        <button type="button" class="btn btn-warning">Sign-up</button>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+</div>

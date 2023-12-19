@@ -1,0 +1,219 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Account</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
+
+<div th:insert="blocks/header :: header"></div>
+
+<body>
+
+
+<div class="container py-4">
+
+    <div class="row align-items-md-stretch">
+        <div class="col-md-6">
+            <div class="h-100 p-5 text-bg-dark rounded-3 private-inf">
+                <h2>Информация об аккаунте</h2>
+                <div class="text-bg-dark border rounder-3">
+                    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+                        <div class="container-fluid">
+                            <a class="navbar-brand" href="#">Логин: </a>
+                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+                            <div class="collapse navbar-collapse" id="navbarNav">
+                                <ul class="navbar-nav">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" aria-current="page" href="#" th:text="${login}"></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </nav>
+                    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+                        <div class="container-fluid">
+                            <a class="navbar-brand" href="#">Пароль: </a>
+                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+                            <div class="collapse navbar-collapse" id="navbarNav">
+                                <ul class="navbar-nav">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" aria-current="page" href="#" th:text="${password}"></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+                <div>
+                    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+                        <div class="container-fluid">
+                            <a class="navbar-brand" href="#">Имя: </a>
+                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+                            <div class="collapse navbar-collapse" id="navbarNav">
+                                <ul class="navbar-nav">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" aria-current="page" href="#" th:text="${inf.getPerson_name()}">Констатнтин</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </nav>
+                    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+                        <div class="container-fluid">
+                            <a class="navbar-brand" href="#">Фамилия: </a>
+                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+                            <div class="collapse navbar-collapse" id="navbarNav">
+                                <ul class="navbar-nav">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" aria-current="page" href="#" th:text="${inf.getPerson_lastname()}"></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </nav>
+                    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+                        <div class="container-fluid">
+                            <a class="navbar-brand" href="#">Отчество: </a>
+                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+                            <div class="collapse navbar-collapse" id="navbarNav">
+                                <ul class="navbar-nav">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" aria-current="page" href="#" th:text="${inf.getPerson_patronymic()}"></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </nav>
+                    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+                        <div class="container-fluid">
+                            <a class="navbar-brand" href="#">Телефон: </a>
+                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+                            <div class="collapse navbar-collapse" id="navbarNav">
+                                <ul class="navbar-nav">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" aria-current="page" href="#" th:text="${inf.getPhone()}"></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </nav>
+                    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+                        <div class="container-fluid">
+                            <a class="navbar-brand" href="#">Почта: </a>
+                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+                            <div class="collapse navbar-collapse" id="navbarNav">
+                                <ul class="navbar-nav">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" aria-current="page" href="#" th:text="${inf.getEmail()}"></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </nav>
+                    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+                        <div class="container-fluid">
+                            <a class="btn btn-warning" th:href=" '/users/' + ${id_for_user_edit} + '/edit-user' " role="button">Редактировать информацию</a>
+                        </div>
+                    </nav>
+                </div>
+<!--                <p>Swap the background-color utility and add a `.text-*` color utility to mix up the jumbotron look. Then, mix and match with additional component themes and more.</p>-->
+<!--                <button class="btn btn-outline-light" type="button">Example button</button>-->
+            </div>
+
+        </div>
+        <div class="col-md-6">
+            <div class="h-100 p-5 bg-body-tertiary border rounded-3">
+<!--                <div class="container mt-5" >-->
+                <div class="container" id="table_pay" style="z-index: 4">
+                    <h2>Общая сумма выплат</h2>
+                    <div class="table-responsive small">
+                        <table class="table table-striped table-sm table-bordered border-black">
+                            <thead>
+                            <tr>
+                                <th class=" align-top" scope="col">ДОХОД</th>
+                                <th class=" align-top" scope="col">ПРИБЫЛЬ</th>
+                                <th class=" align-center" scope="col">ВЫПЛАТЫ СОТРУДНИКАМ</th>
+                                <th class=" align-center" scope="col">ОПЛАТА НАЛОГОВ</th>
+                                <th class=" align-center" scope="col">ТИП НАЛОГА</th>
+                            </tr>
+                            </thead>
+                            <tbody class="table-group-divider">
+                            <tr>
+                                <td th:text="${payer_inf.getSum_incom()}"></td>
+                                <td th:text="${payer_inf.getSum_profit()}"></td>
+                                <td th:text="${payer_inf.getSum_payout_pp()}"></td>
+                                <td th:text="${payer_inf.getSum_tax_pay()}"></td>
+                                <td>
+<!--                                    <div th:each="el : ${info}" class="btn-group">-->
+<!--                                        <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" th:text="${payer_inf.getTax_type()}"></button>-->
+<!--                                        <ul class="dropdown-menu dropdown-menu-end">-->
+<!--                                            <li><button class="dropdown-item" type="button" th:text="'Тип: '${el.type_tax}"></button></li>-->
+<!--                                            <li><button class="dropdown-item" type="button" th:text="${el.incom_tax_ind} + '%'"></button></li>-->
+<!--                                            <li><button class="dropdown-item" type="button" th:text="${el.profit_tax} + '%'"></button></li>-->
+<!--                                            <li><button class="dropdown-item" type="button" th:text="${el.fszn_tax} + '%'"></button></li>-->
+<!--                                        </ul>-->
+<!--                                    </div>-->
+                                    <div th:each="el : ${info}">
+                                        <p class="d-inline-flex gap-1">
+                                            <a th:text="${el.type_tax}" class="btn btn-light btn-sm" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                                            </a>
+                                        </p>
+                                    </div>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <div th:each="el : ${info}" class="collapse" id="collapseExample">
+                            <div class="card card-body">
+<!--                                <p th:text="'Для вашего юридического лица предусматривается"></p>-->
+                                <div>
+                                    <i th:text="${nameTax}"></i>
+
+                                </div>
+                                <p th:text="'Процентные ставки и отчисления:'"></p>
+                                <div>
+                                    Налог на доход: <i th:text="${el.profit_tax}"></i>%<br>
+                                    Подоходный налог: <i th:text="${el.incom_tax_ind}"></i>%<br>
+                                    ФСЗН: <i th:text="${el.fszn_tax}"></i>%<br>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div th:each="el : ${org_inf}">
+                        <ul class="list-group">
+                            <li class="list-group-item">Название организации: <i th:text="${el.full_name_org}"></i></li>
+                            <li class="list-group-item">CEO: <i th:text="${el.ceo}"></i></li>
+                            <li class="list-group-item">Тип органищации: <i th:text="${el.type}"></i></li>
+                            <li class="list-group-item">УНП: <i th:text="${el.payer_reg_number}"></i></li>
+                            <li class="list-group-item">E-signature: <i th:text="${el.e_signature}"></i></li>
+                        </ul>
+                    </div>
+                </div>
+<!--                <button class="btn btn-outline-secondary" type="button">Example button</button>-->
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div th:insert="blocks/footer :: footer"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Регистрация</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+    <script src="https://unpkg.com/imask"></script>
+</head>
+<body>
+<style>
+
+
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 90vh;
+    }
+</style>
+<div class="container">
+    <div class="col-md-6">
+        <h2 class="text-center mb-4">Регистрация</h2>
+        <form action="/registration" method="post">
+            <div class="form-group">
+                <input type="text" th:value="${login}" name="login" placeholder="Логин" class="form-control" ><br>
+                <p style="color: #fa3030" th:text="${errorMessage}"></p>
+            </div>
+            <div class="form-group">
+                <input type="password" name="password" placeholder="Пароль" class="form-control" minlength="6" required><br>
+            </div>
+            <div class="form-group">
+                <input type="text" th:value="${name}" name="name" placeholder="Имя" class="form-control" ><br>
+            </div>
+            <div class="form-group">
+                <input type="text" th:value="${lastname}" name="lastname" placeholder="Фамилия" class="form-control" ><br>
+            </div>
+            <div class="form-group">
+                <input type="text" th:value="${patronymic}" name="patronymic" placeholder="Отчество" class="form-control" ><br>
+            </div>
+            <div class="form-group">
+                <input type="text" th:value="${phone}" name="phone" placeholder="Телефон" class="form-control"  minlength="13"  id="phone-input"><br>
+            </div>
+            <div class="form-group">
+                <input type="email" th:value="${email}" name="email" placeholder="Почта" class="form-control"><br>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Регистрация</button>
+            <p class="text-center mt-3"><a href="/login" class="button1">Авторизация</a></p>
+        </form>
+
+        <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var phoneInput = document.getElementById('phone-input');
+            var phoneMask = IMask(phoneInput, {
+                mask: '+000 (00) 000-00-00',
+                placeholderChar: 'X',
+                lazy: false
+            });
+        });
+    </script>
+
+        <script>
+        var inputField = document.getElementById('phone-input');
+        var submitButton = document.getElementById('reg_btn');
+
+        inputField.addEventListener('keyup', function() {
+
+            if (inputField.value.includes('X')) {
+                submitButton.disabled = true; // Добавляем атрибут disabled
+            } else {
+                submitButton.disabled = false; // Удаляем атрибут disabled
+            }
+        });
+    </script>
+    </div>
+</div>
+</body>
+</html>
